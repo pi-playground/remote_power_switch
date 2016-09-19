@@ -2,7 +2,7 @@
 import pika
 from  gpiozero import DigitalOutputDevice
 
-switch =  DigitalOutputDevice(21, initial_value=1)
+switch =  DigitalOutputDevice(21, initial_value=1 ,active_high=false )
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(
                'rabbitmq.dev.twleansw.com'))
@@ -12,10 +12,10 @@ poserStatus = 'POWER_STATUS_OFF'
 def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)
     if body == 'POWER_OFF' :
-    	switch.on()
+    	switch.off()
     	poserStatus = 'POWER_STATUS_ON'
     if body == 'POWER_ON' :
-    	switch.off()
+    	switch.on()
     	poserStatus = 'POWER_STATUS_OFF'
     if body == 'REPORT_STATUS' :
     	channel.basic_publish(exchange='',
