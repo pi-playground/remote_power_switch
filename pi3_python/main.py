@@ -8,12 +8,19 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
                'rabbitmq.dev.twleansw.com'))
 channel = connection.channel()
 channel.queue_declare(queue='remote_power_switch')
+poserStatus = 'POWER_STATUS_OFF'
 def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)
     if body == 'POWER_OFF' :
     	switch.on()
+    	poserStatus = 'POWER_STATUS_ON'
     if body == 'POWER_ON' :
     	switch.off()
+    	poserStatus = 'POWER_STATUS_OFF'
+    if body == 'REPORT_STATUS' :
+    	channel.basic_publish(exchange='',
+	                      routing_key='remote_power_status_report',
+	                      body= poserStatus)
 
 channel.basic_consume(callback,
                       queue='remote_power_switch',

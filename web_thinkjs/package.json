@@ -1,0 +1,14 @@
+{
+  "name": "thinkjs-application",
+  "description": "application created by thinkjs",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node www/development.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.4.2",
+    "thinkjs": "2.2.x"
+  },
+  "repository": "",
+  "license": "MIT"
+}
