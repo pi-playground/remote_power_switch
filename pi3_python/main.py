@@ -2,7 +2,7 @@
 import pika
 from  gpiozero import DigitalOutputDevice
 
-switch =  DigitalOutputDevice(21, initial_value=1 ,active_high=False )
+switch =  DigitalOutputDevice(21, initial_value=0 ,active_high=False )
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(
                'rabbitmq.dev.twleansw.com'))
