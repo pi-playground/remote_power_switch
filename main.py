@@ -12,7 +12,7 @@ def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)
     if body == 'POWER_OFF' :
     	switch.on()
-    if body === 'POWER_ON' :
+    if body == 'POWER_ON' :
     	switch.off()
 
 channel.basic_consume(callback,
