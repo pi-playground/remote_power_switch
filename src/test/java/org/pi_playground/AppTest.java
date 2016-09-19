@@ -1,4 +1,4 @@
-package org.pi-playground;
+package org.pi_playground;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
