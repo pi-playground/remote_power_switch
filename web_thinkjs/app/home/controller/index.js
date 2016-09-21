@@ -13,8 +13,6 @@ function sendMsg(msg){
 }
 amqp.connect('amqp://rabbitmq.dev.twleansw.com', function(err, conn) {
   conn.createChannel(function(err, ch) {
-
-    
     ch.assertQueue(q, {durable: false});
     // Note: on Node 6 Buffer.from(msg) should be used
     _ch = ch ;

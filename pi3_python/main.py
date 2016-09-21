@@ -28,6 +28,6 @@ while True :
                           no_ack=True)
     print(' [*] Waiting for messages. To exit press CTRL+C')
     try:
-        consumer_channel.start_consuming()
+        channel.start_consuming()
     finally:
         connection.close()
