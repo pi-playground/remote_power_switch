@@ -4,7 +4,7 @@ from  gpiozero import DigitalOutputDevice
 
 switch =  DigitalOutputDevice(21, initial_value=0 ,active_high=False )
 
-while true :
+while True :
     connection = pika.BlockingConnection(pika.ConnectionParameters(
                    'rabbitmq.dev.twleansw.com'))
     channel = connection.channel()
@@ -31,4 +31,3 @@ while true :
         consumer_channel.start_consuming()
     finally:
         connection.close()
-        
